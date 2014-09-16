@@ -1,0 +1,52 @@
+%% -----------------------------------------------------
+%% Configuration of an NSERC application
+%% Defines a few macros that are global to all documents of the application
+%% ----------------------------------------------------
+
+%% If your application involves a company, put the name of the company
+%% in a macro rather than writing it directly.
+\newcommand{\namecompany}{Temporal inc.}
+
+%% Application year. Only appears in the metadata of the generated PDF.
+\newcommand{\applicationyear}{2014}
+
+%% The list of all authors of the application. Again, only useful for the
+%% PDF metadata
+\newcommand{\authorlist}{Emmett Brown}
+
+%% The name and NSERC PIN of the main applicant
+\nsercname{Emmett Brown}
+\nsercpin{999999}
+
+%% Documents are not dated
+\date{}
+
+%% Paragraphes français
+%\setlength{\parindent}{0pt}
+
+%% Hack to have list items displayed in a more compact way
+\usepackage{paralist}
+\setlength{\pltopsep}{4pt}
+\setlength{\plitemsep}{4pt}
+
+%% ----------
+%% Loading a few packages. These are all optional and can be commented
+%% out if you with. Feel free to add others.
+%% ----------
+\usepackage{hyperref}
+\hypersetup{%
+  pdfauthor = {\authorlist{}},
+  pdfsubject = {NSERC \applicationyear{} \namecompany{}}
+}
+\usepackage{microtype}
+\usepackage{cite}
+\usepackage{url}
+\usepackage[x11names]{xcolor}
+\usepackage[]{todonotes}
+\usepackage{comment}
+
+%% Useful: a few "todo" macros to display colored boxes with remarks
+%% and comments
+\newcommand{\todoemmett}[1]{\todo[inline,color=OliveDrab1]{\sf\small Emmett: #1}}
+\newcommand{\todomarty}[1]{\todo[inline,color=LightBlue2]{\sf\small Marty: #1}}
+\newcommand{\todoall}[1]{\todo[inline,color=yellow]{\sf\small #1}}
