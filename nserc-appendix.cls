@@ -25,7 +25,7 @@
 %% ------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{nserc-appendix}
-              [2011/11/09 v1.3 Classe annexe CRSNG par Sylvain Hallé]
+              [2014/11/25 v1.31 Classe annexe CRSNG par Sylvain Hallé]
 
 %% ------------------------
 %% Definition of the language parameters
@@ -46,12 +46,14 @@
 \fi
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{lastpage}
-\RequirePackage[T1]{fontenc}
+\RequirePackage[T1]{fontenc}     %% Type-1 font encoding
+\RequirePackage{microtype}       %% Better handling of typo
 \RequirePackage{fourier}
 \RequirePackage{berasans}
 \RequirePackage{fancyhdr}
-\RequirePackage{geometry}
-\RequirePackage{ifthen}
+\RequirePackage{geometry}        %% Change page margins
+\RequirePackage{ifthen}          %% Required to evaluate conditions
+\RequirePackage{ulem}            %% For non-ugly underlining
 
 %% Prevents heading and single lines to be split across pages
 \widowpenalty=1000
@@ -121,7 +123,7 @@
 \newcommand{\subsectionplain}[2]{%
 \refstepcounter{subsection}
 \vskip 6pt
-{\noindent\underline{#1}}
+{\noindent\uline{#1}}
 \vskip 6pt
 }
 \newcommand{\subsectionno}[1]{%
