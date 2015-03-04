@@ -25,7 +25,7 @@
 %% ------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{nserc-appendix}
-              [2014/11/25 v1.31 Classe annexe CRSNG par Sylvain Hallé]
+              [2015/03/03 v1.32 Classe annexe CRSNG par Sylvain Hallé]
 
 %% ------------------------
 %% Definition of the language parameters
@@ -53,7 +53,7 @@
 \RequirePackage{fancyhdr}
 \RequirePackage{geometry}        %% Change page margins
 \RequirePackage{ifthen}          %% Required to evaluate conditions
-\RequirePackage{ulem}            %% For non-ugly underlining
+\RequirePackage[normalem]{ulem}  %% For non-ugly underlining
 
 %% Prevents heading and single lines to be split across pages
 \widowpenalty=1000
@@ -148,61 +148,21 @@
 %% New: subsubsubsection
 %% ------------------------------
 \newcommand\subsubsubsection[1]{%
-  \noindent{\textit{#1}}
+\noindent{\textit{#1}}
 }
 
 %% ------------------------------
-%% Redefine bibliography
+%% So that the bibliography environment in the document
+%% uses the proper heading
 %% ------------------------------
-\makeatletter
-\ifthenelse{\equal{\@inlinerefs}{true}}{% then
-\addto\captionsenglish{\renewcommand*{\refname}{References}}
-\renewenvironment{thebibliography}[1]
-     {%\section*{\refname}% <-- this line was changed from \chapter* to \section*
-       \vskip -4pt
-      \@mkboth{}{}%
-      \list{\@biblabel{\@arabic\c@enumiv}}%
-           {\settowidth\labelwidth{\@biblabel{#1}}%
-            \leftmargin\labelwidth
-            \advance\leftmargin\labelsep
-            \@openbib@code
-            \usecounter{enumiv}%
-            \let\p@enumiv\@empty
-            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-      \sloppy
-      \clubpenalty4000
-      \@clubpenalty \clubpenalty
-      \widowpenalty4000%
-      \sfcode`\.\@m}
-     {\def\@noitemerr
-       {\@latex@warning{Empty `thebibliography' environment}}%
-      \endlist}
+\usepackage[sort,square,numbers]{natbib}
+\renewcommand\bibsection{\section*{\refname}}
+
 % Hack: to compress bibitems
+\makeatletter
 \newcommand{\oldbibitem}[2][]{}
 \let\oldbibitem\bibitem
-\renewcommand{\bibitem}[2][]{\oldbibitem[#1]{#2} \vskip -5pt}
-}{% else
-\addto\captionsenglish{\renewcommand*{\refname}{References}}
-\renewenvironment{thebibliography}[1]
-     {\section*{\refname}% <-- this line was changed from \chapter* to \section*
-      \@mkboth{}{}%
-      \list{\@biblabel{\@arabic\c@enumiv}}%
-           {\settowidth\labelwidth{\@biblabel{#1}}%
-            \leftmargin\labelwidth
-            \advance\leftmargin\labelsep
-            \@openbib@code
-            \usecounter{enumiv}%
-            \let\p@enumiv\@empty
-            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-      \sloppy
-      \clubpenalty4000
-      \@clubpenalty \clubpenalty
-      \widowpenalty4000%
-      \sfcode`\.\@m}
-     {\def\@noitemerr
-       {\@latex@warning{Empty `thebibliography' environment}}%
-      \endlist}
-} % end if
+\renewcommand{\bibitem}[2][]{\oldbibitem[#1]{#2} \vskip -4pt}
 \makeatother
 
 %% :mode=latex:wrap=none:
