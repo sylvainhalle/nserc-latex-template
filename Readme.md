@@ -18,5 +18,5 @@ About the author
 ----------------
 
 This class was designed by [Sylvain Hallé](http://leduotang.ca/sylvain),
-Associate Professor at [Université du Québec à Chicoutimi](http://www.uqac.ca),
+Full Professor at [Université du Québec à Chicoutimi](http://www.uqac.ca),
 Canada.
