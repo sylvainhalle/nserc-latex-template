@@ -1,7 +1,7 @@
 %% -----------------------------------------------------
 %% Sample free form document written in NSERC format
 %%
-%% Step 1: declare the document as "nserc-appendix"; use either 11 or 12pt
+%% Declare the document as "nserc-appendix"; use either 11 or 12pt
 %% fonts, and specify whether the document is in French or English
 %% -----------------------------------------------------
 \documentclass[12pt,english]{nserc-appendix}
@@ -25,7 +25,9 @@
 \title{Title of the document}
 
 %% ----------
-%% Set start page number of the document
+%% Set start page number of the document. Change this depending on
+%% the part you are writing, and its position relative to the rest of
+%% the application.
 %% ----------
 \setcounter{page}{7}
 \maketitle
@@ -60,7 +62,7 @@ sagittis eleifend velit sit amet placerat.
 %% ------------
 \newpage
 \pagestyle{plain}
-\bibliographystyle{plain}
+\bibliographystyle{abbrv}
 \bibliography{example}
 
 \end{document}

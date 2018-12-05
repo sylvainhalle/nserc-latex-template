@@ -8,7 +8,7 @@
 \newcommand{\namecompany}{Temporal inc.}
 
 %% Application year. Only appears in the metadata of the generated PDF.
-\newcommand{\applicationyear}{2014}
+\newcommand{\applicationyear}{2018}
 
 %% The list of all authors of the application. Again, only useful for the
 %% PDF metadata
@@ -36,16 +36,21 @@
 \usepackage{hyperref}
 \hypersetup{%
   pdfauthor = {\authorlist{}},
+  pdfcreator = {NSERC LaTeX Template V1.4},
   pdfsubject = {NSERC \applicationyear{} \namecompany{}}
 }
-\usepackage{microtype}
 \usepackage{url}
-\usepackage[x11names]{xcolor}
-\usepackage[]{todonotes}
+\usepackage{xcolor}
+\usepackage{todonotes}
 \usepackage{comment}
 
 %% Useful: a few "todo" macros to display colored boxes with remarks
 %% and comments
-\newcommand{\todoemmett}[1]{\todo[inline,color=OliveDrab1]{\sf\small Emmett: #1}}
-\newcommand{\todomarty}[1]{\todo[inline,color=LightBlue2]{\sf\small Marty: #1}}
-\newcommand{\todoall}[1]{\todo[inline,color=yellow]{\sf\small #1}}
+\newcommand{\todoemmett}[1]{\todo[inline,caption={},color=cyan]{\sf\small Emmett: #1}}
+\newcommand{\todomarty}[1]{\todo[inline,caption={},color=pink]{\sf\small Marty: #1}}
+\newcommand{\todoall}[1]{\todo[inline,caption={},color=yellow]{\sf\small #1}}
+
+%% This will print a "DRAFT" watermark on all pages.
+%% Uncomment the next two lines once the application is ready.
+% \usepackage{draftwatermark}
+% \SetWatermarkText{DRAFT}

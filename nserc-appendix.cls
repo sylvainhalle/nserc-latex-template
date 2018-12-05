@@ -1,6 +1,6 @@
 %% --------------------------------------
 %% NSERC Appendix class
-%% (C) 2011-2014 Sylvain Hallé
+%% (C) 2011-2018 Sylvain Hallé
 %%
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3
@@ -25,7 +25,7 @@
 %% ------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{nserc-appendix}
-              [2015/03/03 v1.32 Classe annexe CRSNG par Sylvain Hallé]
+              [2018/12/05 v1.4 Classe annexe CRSNG par Sylvain Hallé]
 
 %% ------------------------
 %% Definition of the language parameters
@@ -44,16 +44,18 @@
 \else
   \LoadClass[letterpaper,onecolumn,pdftex]{article}
 \fi
-\RequirePackage[utf8]{inputenc}
-\RequirePackage{lastpage}
-\RequirePackage[T1]{fontenc}     %% Type-1 font encoding
-\RequirePackage{microtype}       %% Better handling of typo
-\RequirePackage{fourier}
-\RequirePackage{berasans}
-\RequirePackage{fancyhdr}
-\RequirePackage{geometry}        %% Change page margins
-\RequirePackage{ifthen}          %% Required to evaluate conditions
-\RequirePackage[normalem]{ulem}  %% For non-ugly underlining
+\RequirePackage[sort,square,numbers]{natbib} %% Format bibliography
+\RequirePackage[utf8]{inputenc}       %% Use UTF-8 in input files
+\RequirePackage{lastpage}             %% To get number of last page
+\RequirePackage[T1]{fontenc}          %% Type-1 font encoding
+\RequirePackage{microtype}            %% Better handling of typo
+\RequirePackage{fourier}              %% Sans-serif heading font
+\RequirePackage{berasans}             %% Serif text font
+\RequirePackage{fancyhdr}             %% Define header/footer
+\RequirePackage{geometry}             %% Change page margins
+\RequirePackage{ifthen}               %% Required to evaluate conditions
+\RequirePackage[normalem]{ulem}       %% For non-ugly underlining
+\RequirePackage[calcwidth]{titlesec}
 
 %% Prevents heading and single lines to be split across pages
 \widowpenalty=1000
@@ -98,51 +100,15 @@
 \vskip 8pt
 }
 
-%% Redefine section
-\makeatletter
-\renewcommand{\section}{\@ifstar\sectionplain\sectionno}
-\newcommand{\sectionplain}[2]{%
-\refstepcounter{section}
-\vskip \@sectspacing
-{\noindent\sf\bfseries #1}
-\vskip \@sectspacing
-}
-\newcommand{\sectionno}[1]{%
-\refstepcounter{section}
-\vskip \@sectspacing
-{\noindent\sf\bfseries \thesection.\ #1}
-\vskip \@sectspacing
-}
-\makeatother
+%% Redefine section heading
+\titleformat{\section}{\sf\bfseries}{\thesection.\quad}{0pt}{}{}
 
-%% ------------------------------
-%% Redefine sub-section
-%% ------------------------------
-\makeatletter
-\renewcommand{\subsection}{\@ifstar\subsectionplain\subsectionno}
-\newcommand{\subsectionplain}[2]{%
-\refstepcounter{subsection}
-\vskip 6pt
-{\noindent\uline{#1}}
-\vskip 6pt
-}
-\newcommand{\subsectionno}[1]{%
-\refstepcounter{subsection}
-\vskip 6pt
-{\noindent\underline{\alph{subsection})~#1}}
-\vskip 6pt
-}
-\makeatother
+%% Redefine sub-section heading
+\renewcommand\thesubsection{\alph{subsection})}
+\titleformat{\subsection}[block]{}{\thesubsection}{.5em}{}[\vspace{-2em}\rule{\titlewidth}{0.75pt}]
 
-%% ------------------------------
 %% Redefine paragraph
-%% ------------------------------
-\makeatletter
-\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-{4pt}%{3.25ex \@plus1ex \@minus.2ex}% Espacement avant le paragraphe
-{-1em}% Marge avant le texte du paragraphe (doit être négatif)
-{\normalfont\normalsize\bfseries}}
-\makeatother
+\titleformat{\paragraph}[runin]{\bfseries}{\quad}{0pt}{}{}
 
 %% ------------------------------
 %% New: subsubsubsection
@@ -155,7 +121,6 @@
 %% So that the bibliography environment in the document
 %% uses the proper heading
 %% ------------------------------
-\usepackage[sort,square,numbers]{natbib}
 \renewcommand\bibsection{\section*{\refname}}
 
 % Hack: to compress bibitems
