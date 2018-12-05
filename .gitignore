@@ -1,3 +1,12 @@
-*~
-*.bak
+*.aux
+*.pdf
+*.log
+*.bbl
+*.blg
 *.tmp
+*.bak
+*.out
+*~
+\#*
+*\#
+.DS_Store
