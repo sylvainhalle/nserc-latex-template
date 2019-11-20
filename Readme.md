@@ -8,6 +8,9 @@ be self-explanatory.
 Note that I made up this class for my own personal use; I don't
 mind sharing it, but please don't contact me for support.
 
+If you are writing an NSERC **Alliance** grant, please have a look at
+the [template for this type of application](https://github.com/sylvainhalle/nserc-alliance-latex-template).
+
 Use notes
 ---------
 
